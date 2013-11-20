@@ -23,9 +23,6 @@ class WorkEntryRepository extends EntityRepository
 
 	public function getActiveEntities($page = 0, $limit = null)
 	{
-// 		$dql = "SELECT b FROM {$this->getEntityName()} b WHERE b.deleted_at IS NULL ORDER BY b.date DESC";
-// 		$query = $this->setPagination($this->_em->createQuery($dql), $page, $limit);
-// 		return $query->getResult();
 		return $this->_em->createQueryBuilder('we.date DESC')
 			->select('we', 'u')
 			->from($this->getEntityName(), 'we')
