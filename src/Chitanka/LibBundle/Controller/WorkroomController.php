@@ -4,7 +4,7 @@ namespace Chitanka\LibBundle\Controller;
 
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
+use Doctrine\Common\Util\Debug;
 class WorkroomController extends Controller
 {
 	protected $repository = 'WorkEntry';
@@ -103,11 +103,19 @@ class WorkroomController extends Controller
 	}
 
 
-	public function rssAction()
+	public function rssAction($_format = 'rss')
 	{
-		$_REQUEST['type'] = 'work';
-
-		return $this->legacyPage('Feed');
+		$limit = 10;
+		switch($_format){
+			case 'rss';
+				$maxPerPage = 10;
+				$repo = $this->getWorkEntryRepository();
+				$this->view = array(
+						'workEntities' => $repo->getActiveEntities()
+				);
+				break;
+		}
+		return $this->display("list_books.$_format");
 	}
 
 

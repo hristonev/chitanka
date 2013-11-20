@@ -1,0 +1,17 @@
+{% extends 'LibBundle::layout.rss.twig' %}
+
+{% block title 'Работно ателие' %}
+{% block content %}
+
+	{% for entity in workEntities %}
+		<item>
+				<title>{{ entity.title }}</title>
+				<dc:creator>{{ entity.user }}</dc:creator>
+				<link>{{ url('workroom') }}/entry/{{entity.id}}</link>
+				<pubDate>{{ entity.date.format('r') }}</pubDate>	
+				<guid>{{ url('workroom') }}/entry/{{entity.id}}</guid>
+				<description>{{ entity.comment }}</description>
+		</item>
+	{% endfor %}
+
+{% endblock %}
