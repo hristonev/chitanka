@@ -565,6 +565,10 @@ reviews:
     pattern:   /reviews
     defaults: { _controller: LibBundle:Feed:reviews }
 
+rss_feed:
+    pattern:   /rssFeed
+    defaults: { _controller: LibBundle:RssFeed:index }
+
 # fos_user_security:
     # resource: @FOSUserBundle/Resources/config/routing/security.xml
 

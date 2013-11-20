@@ -52,6 +52,7 @@ class FeedPage extends Page {
 
 
 	protected function buildContent() {
+
 		$ftPref = ucfirst($this->feedtype);
 		$myfields = array('root' => $this->root);
 		$pagename = '';
